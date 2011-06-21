@@ -15,7 +15,7 @@ def accumulate():
         row = []
         for b in basis:
             if b not in readings[t]:
-                v = 0
+                v = -95 # too silent
             else:
                 v = readings[t][b]
             row.append(v)
