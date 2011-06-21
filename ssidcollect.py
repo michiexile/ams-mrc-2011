@@ -14,6 +14,7 @@ def collect():
         if m == None:
             continue
         print t, m.group(2), m.group(3)
+    f.close()
 
 if __name__ == '__main__':
     while True:
