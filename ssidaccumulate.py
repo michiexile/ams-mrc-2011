@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -u
 
 import sys, collections, csv
 
@@ -8,6 +8,9 @@ def accumulate():
     matrix = []
     for l in sys.stdin:
         ls = l.split()
+        if len(ls) != 3:
+            print l
+            continue
         readings[ls[0]][ls[1]] = ls[2]
         basis.add(ls[1])
     
