@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os, re, time
+import sys, os, re, time
 
 ssidRE = "\s+([^ ]{2,32})\s+([0-9a-f:]*)\s(-?\d+)"
 
@@ -17,5 +17,10 @@ def collect():
     f.close()
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        n = int(sys.argv[1])
+        for i in range(n):
+            collect()
+        exit(0)
     while True:
         collect()
