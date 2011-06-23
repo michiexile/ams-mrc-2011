@@ -8,25 +8,25 @@ def accumulate():
     matrix = []
     for l in sys.stdin:
         ls = l.split()
-        if len(ls) != 3:
-            print l
-            continue
-        readings[ls[0]][ls[1]] = ls[2]
-        basis.add(ls[1])
+        if len(ls) == 3:
+            [t,b,v] = ls
+            readings[t][b] = v
+            basis.add(b)
+    
+    header = ['timestamp'] + [b for b in basis]
     
     for t in readings:
-        row = []
+        row = [t]
         for b in basis:
             if b not in readings[t]:
-                v = -95 # too silent
+                row.append(-95) # too silent
             else:
-                v = readings[t][b]
-            row.append(v)
+                row.append(readings[t][b])
         matrix.append(row)
-
-    csvw = csv.writer(sys.stdout)
+        
+    csvw = csv.writer(sys.stdout,lineterminator='\n')
+    csvw.writerow(header)
     csvw.writerows(matrix)
 
 if __name__ == '__main__':
     accumulate()
-

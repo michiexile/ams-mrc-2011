@@ -3,7 +3,7 @@ import edu.stanford.math.plex4.*;
 maxV = 50.0;
 maxD = 2;
 
-data = dlmread('grouppoints.csv');
+data = dlmread('grouppoints.csv',',',1,0);
 ms = api.Plex4.createEuclideanMetricSpace(data);
 ls = api.Plex4.createMaxMinSelector(ms,50);
 vr = api.Plex4.createWitnessStream(ls,maxD,maxV,100);
